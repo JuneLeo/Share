@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_marginTop="15dp"
+    android:background="#ffffff"
+    android:orientation="vertical">
+    <TextView
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="15dp"
+        android:textSize="14sp"
+        android:id="@+id/title_s"
+        android:textStyle="bold"
+        android:textColor="#000000"
+        tools:text="【吉米旗舰店】遮瑕控油防晒隔离BB霜"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:lineSpacingExtra="2dp"
+        android:paddingTop="10dp"
+        android:textSize="14sp"
+        android:textColor="#000000"
+        android:id="@+id/des"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        tools:text="产品描述信息，一只非常让人想哭的BB霜，1只=1只遮瑕+
+1只防晒产品描述信息，一只非常让人想哭的BB霜，1只=1只遮瑕+产品描述信息，一只非常让人想哭"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <ImageView
+        android:id="@+id/big"
+        android:layout_width="match_parent"
+        android:layout_height="190dp" />
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <com.leo.events.view.SquareImageView
+            android:id="@+id/left"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent" />
+        <View
+            android:layout_width="5dp"
+            android:layout_height="10dp"/>
+        <com.leo.events.view.SquareImageView
+            android:id="@+id/right"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+    <View
+        android:background="#dddddd"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"/>
+    <LinearLayout
+        android:gravity="center"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+        <TextView
+            android:drawablePadding="10dp"
+            android:id="@+id/share"
+            android:textSize="16dp"
+            android:drawableLeft="@mipmap/share_arram"
+            android:text="一键分享"
+            android:textColor="#9197a3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+</LinearLayout>

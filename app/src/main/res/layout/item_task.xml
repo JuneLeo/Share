@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <TextView
+        android:gravity="center"
+        android:text="aaaa"
+        android:textSize="20sp"
+        android:id="@+id/task"
+        android:layout_width="match_parent"
+        android:layout_height="50dp" />
+    <View
+        android:background="@android:color/darker_gray"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"/>
+</LinearLayout>

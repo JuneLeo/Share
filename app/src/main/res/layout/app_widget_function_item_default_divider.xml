@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@drawable/app_widget_divider_vertical"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    android:id="@+id/tv_app_widget_item_default_divider"/>

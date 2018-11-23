@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.leo.events">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission
+        android:name="android.permission.PACKAGE_USAGE_STATS"
+        tools:ignore="ProtectedPermissions" />
+    <uses-permission
+        android:name="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE"
+        tools:ignore="ProtectedPermissions" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
+    <application
+        android:name=".MainApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher_app"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_app"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        tools:ignore="AllowBackup,GoogleAppIndexingWarning">
+        <activity android:name=".MainActivity">
+            <!--<intent-filter>--> <!-- 设置后系统将认为是隐式启动，将不显示图标，很坑爹-->
+            <!--<data android:scheme="ishare" android:host="cmcm.share" android:path="/share/home"/>-->
+            <!--</intent-filter>-->
+        </activity>
+        <activity
+            android:name=".shareutil._ShareActivity"
+            android:launchMode="singleTask"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar">
+            <intent-filter>
+                <action android:name="com.sina.weibo.sdk.action.ACTION_SDK_REQ_ACTIVITY" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".wxapi.WXEntryActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        // 注册辅助功能服务
+        <service
+            android:name=".accessibility.AccessibilitySampleService"
+            android:enabled="true"
+            android:exported="true"
+            android:label="@string/accessibility_tip"
+            android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE">
+            <intent-filter>
+                <action android:name="android.accessibilityservice.AccessibilityService" />
+            </intent-filter>
+            // 通过xml文件完成辅助功能相关配置，也可以在onServiceConnected中动态配置
+            <meta-data
+                android:name="android.accessibilityservice"
+                android:resource="@xml/accessibility_config" />
+        </service>
+
+        <activity
+            android:name=".accessibility.AccessibilityOpenHelperActivity"
+            android:excludeFromRecents="true"
+            android:launchMode="singleTask"
+            android:process=":BackgroundService"
+            android:taskAffinity="com.open.helper"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+
+        <receiver android:name=".appwidget.AppWidgetItemProvider">
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/appwidget_item_provider" />
+
+            <intent-filter>
+                <action android:name="com.example.action.CLICK" />
+                <action android:name="com.share.appwidget.list.click" />
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+        </receiver>
+
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="com.event.leo.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+
+        <service
+            android:name=".appwidget.AppWidgetListViewService"
+            android:exported="false"
+            android:permission="android.permission.BIND_REMOTEVIEWS" />
+        <service
+            android:name=".transform.TransformService"
+            android:process=":foreground" />
+
+        <activity android:name=".appwidget.AppWidgetConfigActivity">
+            <intent-filter>
+                <category android:name="android.intent.category.DEFAULT" />
+                <action android:name="android.intent.action.VIEW" />
+                <data
+                    android:host="cmcm.share"
+                    android:path="/share/appwidget/config"
+                    android:port="80"
+                    android:scheme="ishare" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".SplashActivity"
+            android:theme="@style/SplashTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <action android:name="android.intent.action.VIEW" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".ProductActivity" />
+
+        <service
+            android:name=".job.BackgroundTaskService"
+            android:permission="android.permission.BIND_JOB_SERVICE"/>
+            <!--android:process=":service" />-->
+        <receiver
+            android:name=".job.AlarmReceiver"
+            android:process=":service">
+            <intent-filter>
+                <action android:name="com.leo.events.BACKGROUND" />
+            </intent-filter>
+        </receiver>
+        <service
+            android:name=".notification.NotificationMonitor"
+            android:permission="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE">
+            <intent-filter>
+                <action android:name="android.service.notification.NotificationListenerService" />
+            </intent-filter>
+        </service>
+        <service android:name=".tile.ShareTileService"
+            android:icon="@mipmap/ic_launcher"
+            android:label="Share"
+            android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
+            <intent-filter>
+                <action android:name="android.service.quicksettings.action.QS_TILE" />
+            </intent-filter>
+        </service>
+
+        <activity android:name=".CardActivity" />
+        <service android:name=".tile.BackgroundService"
+            android:process=":service"/>
+        <activity android:name=".ChatActivity"/>
+    </application>
+
+</manifest>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:background="@drawable/bg_appwidget_black"
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+        <TextView
+            android:id="@+id/tv_title"
+            android:text="大事件"
+            android:background="#22000000"
+            android:textColor="@android:color/white"
+            android:gravity="center_vertical|left"
+            android:paddingLeft="10dp"
+            android:textSize="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="50dp" />
+        <ImageView
+            android:id="@+id/iv_add"
+            android:padding="5dp"
+            android:background="@drawable/ic_add_white_24dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_width="30dp"
+            android:layout_marginRight="3dp"
+            android:layout_height="30dp" />
+    </RelativeLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@android:color/darker_gray"/>
+    <ListView
+        android:id="@+id/lv_list"
+        android:divider="@drawable/app_widget_divider_horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="280dp"/>
+
+</LinearLayout>

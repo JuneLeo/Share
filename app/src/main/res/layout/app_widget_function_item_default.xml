@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="100dp"
+    android:text="haha"
+    android:textSize="20sp"
+    android:gravity="center"
+    android:id="@+id/tv_app_widget_item_default"
+    android:layout_height="100dp">
+    <!--android:id="@+id/tv_app_widget_item_default"-->
+
+</TextView>

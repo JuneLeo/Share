@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.leo.events.MainActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/shared_text"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="分享文字" />
+
+            <Button
+                android:id="@+id/shared_image"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="分享图片" />
+
+            <Button
+                android:id="@+id/shared_android_text"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="原生分享一张图" />
+
+            <Button
+                android:id="@+id/shared_android_img"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="原生分享多张图" />
+
+            <Button
+                android:id="@+id/permission"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="授权" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:gravity="center"
+                android:hint="授权后自动分享" />
+
+            <Button
+                android:id="@+id/alipay"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="支付宝转账" />
+
+            <Button
+                android:id="@+id/goto_wechat"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="跳转到朋友圈" />
+
+            <Button
+                android:id="@+id/list"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="获取列表" />
+
+            <TextView
+                android:id="@+id/tv_app_widget"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="appwidget发送广播" />
+            <Button
+                android:id="@+id/custom"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="xuanrang" />
+            <com.leo.events.view.AppProgressCircleView
+                android:id="@+id/custom_view"
+                android:layout_width="180dp"
+                android:layout_height="180dp"
+                android:layout_gravity="center" />
+            <Button
+                android:id="@+id/usage"
+                android:layout_width="match_parent"
+                android:layout_height="50dp" />
+            <LinearLayout
+                android:id="@+id/ll_usage"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>
