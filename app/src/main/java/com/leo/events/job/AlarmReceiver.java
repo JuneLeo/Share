@@ -13,5 +13,6 @@ public class AlarmReceiver extends BroadcastReceiver {
     public void onReceive(Context context, Intent intent) {
         Log.e(BackgroundTaskService.TAG,"收到了广播");
         BackgroundTaskService.startWork(context);
+        PendingResult pendingResult = goAsync();
     }
 }

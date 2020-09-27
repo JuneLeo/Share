@@ -23,6 +23,8 @@ class Inject {
                         if (className.contains(clz)) {
                             className = clz.substring(0, clz.length() - 6)
                             println('-------map clz-----' + className)
+                            Class mockClass = Class.forName(clz)
+                            mockClass.getAnnotation()
                             injectClass(className, path, clz, item.value)
                         }
                     }

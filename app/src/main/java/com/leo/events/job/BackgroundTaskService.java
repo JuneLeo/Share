@@ -33,6 +33,8 @@ public class BackgroundTaskService extends JobService {
 //                .setBackoffCriteria(2 * 1000, JobInfo.BACKOFF_POLICY_LINEAR)
                 .setMinimumLatency(5 * 1000)
                 .setOverrideDeadline(6 * 1000)
+                .setPersisted()
+
 //                .setPeriodic(1000)
                 .build();
         int schedule = jobScheduler.schedule(jobInfo);

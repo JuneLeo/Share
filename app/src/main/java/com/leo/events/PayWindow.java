@@ -5,6 +5,7 @@ import android.graphics.PixelFormat;
 import android.graphics.Point;
 import android.os.Build;
 import android.provider.Settings;
+import android.support.annotation.RequiresApi;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,22 +23,23 @@ public class PayWindow {
 
     private WindowManager mWindowManager;
     private WindowManager.LayoutParams mMwLayoutParams;
+
     public static PayWindow get() {
         return window;
     }
 
-    private PayWindow(){
+    private PayWindow() {
         mWindowManager = (WindowManager) MainApplication.getApp().getSystemService(Context.WINDOW_SERVICE);
         mMwLayoutParams = new WindowManager.LayoutParams();
         mMwLayoutParams.flags = WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE | WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL |
                 WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN;
         mMwLayoutParams.format = PixelFormat.TRANSLUCENT;
-        mBgView = LayoutInflater.from(MainApplication.getApp()).inflate(R.layout.window_pay,null);
+        mBgView = LayoutInflater.from(MainApplication.getApp()).inflate(R.layout.window_pay, null);
         type2(mMwLayoutParams);
         init();
     }
 
-    void init(){
+    void init() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             Point p = new Point();
             mWindowManager.getDefaultDisplay().getRealSize(p);
@@ -52,7 +54,7 @@ public class PayWindow {
         }
     }
 
-     boolean type2(WindowManager.LayoutParams layoutParams) {
+    boolean type2(WindowManager.LayoutParams layoutParams) {
         //android targetSdkVersion >= 26 && sdk >=25   这种情况无法使用TYPE_TOAST
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N_MR1) {  //sdk >=25
             if (Settings.canDrawOverlays(MainApplication.getApp())) { // 有悬浮权限
@@ -87,21 +89,21 @@ public class PayWindow {
     }
 
 
-    public void show(){
-        if (isAttach){
+    public void show() {
+        if (isAttach) {
             return;
         }
         isAttach = true;
         try {
             mWindowManager.addView(mBgView, mMwLayoutParams);
-        }catch (Exception e){
+        } catch (Exception e) {
             //
             e.printStackTrace();
         }
     }
 
-    public void dismiss(){
-        if (!isAttach){
+    public void dismiss() {
+        if (!isAttach) {
             return;
         }
         isAttach = false;
@@ -112,5 +114,7 @@ public class PayWindow {
             e.printStackTrace();
         }
     }
+
+
 
 }

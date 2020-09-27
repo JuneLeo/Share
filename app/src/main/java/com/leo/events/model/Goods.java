@@ -36,8 +36,8 @@ public class Goods extends BaseModel{
     @SerializedName("title")
     public String title;
     @SerializedName("images")
-    public List<?> images;
+    public List<String> images;
     @SerializedName("comments")
-    public List<?> comments;
+    public List<Comment> comments;
 
 }

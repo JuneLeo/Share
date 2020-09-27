@@ -33,7 +33,7 @@ public class PushClient {
             @Override
             public void run() {
                 try {
-                    s = new Socket("39.105.123.166", port);
+                    s = new Socket("10.60.136.176", port);
                     dos = new DataOutputStream(s.getOutputStream());
                     dis = new DataInputStream(s.getInputStream());
                     bConnected = true;

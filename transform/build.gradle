@@ -6,6 +6,20 @@ apply from:file('upload.gradle')
 repositories {
     mavenCentral()
     jcenter()
+    mavenLocal()
+    maven {
+        url uri('local-repos')
+    }
+}
+
+allprojects {
+    repositories {
+        jcenter()
+
+        maven {
+            url uri('local-repos')
+        }
+    }
 }
 
 dependencies {
@@ -15,7 +29,7 @@ dependencies {
     implementation 'com.android.tools.build:gradle:3.2.1'  //build tools
     implementation 'com.android.tools.build:transform-api:1.5.0' //transform
     implementation 'org.javassist:javassist:3.23.0-GA' //javassist
-
+//    implementation 'com.transform.mock:Mock:1.0'
 }
 
 sourceCompatibility = "7"

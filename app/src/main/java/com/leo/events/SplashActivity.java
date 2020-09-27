@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 
+import com.newrelic.agent.android.NewRelic;
+
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -17,6 +19,9 @@ public class SplashActivity extends Activity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.splash_activity);
+        NewRelic.withApplicationToken(
+                "AA934b16a73bb4ed5b267fec78c7852539ed134f25"
+        ).start(this.getApplication());
         new Timer().schedule(new TimerTask() {
             @Override
             public void run() {
@@ -24,6 +29,6 @@ public class SplashActivity extends Activity {
                 startActivity(intent);
                 finish();
             }
-        }, 0);
+        }, 2000);
     }
 }

@@ -17,18 +17,27 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 import com.leo.events.accessibility.OpenAccessibilitySettingHelper;
 import com.leo.events.accessibility.utils.AccessibilityUtil;
 import com.leo.events.job.AlarmReceiver;
 import com.leo.events.job.BackgroundTaskService;
 import com.leo.events.model.BaseModel;
 import com.leo.events.model.CustomModel;
+import com.leo.events.model.GoodsList;
 import com.leo.events.model.TaskModel;
+import com.leo.events.net.AppEngine;
 import com.leo.events.notification.NotificationMonitor;
 
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+
+import rx.Subscriber;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.functions.Func1;
+import rx.schedulers.Schedulers;
 
 
 /**
@@ -38,6 +47,8 @@ public class ProductActivity extends AppCompatActivity {
 
     public boolean isFirst = true;
     private String TAG = ProductActivity.class.getName();
+
+    private List<BaseModel> tasks = new ArrayList<>();
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -82,7 +93,9 @@ public class ProductActivity extends AppCompatActivity {
 //
 //                    @Override
 //                    public void onNext(GoodsList s) {
-//                        adapter.setData(s.entity.entityData);
+//
+//                        list.addAll(s.entity.entityData);
+//                        adapter.setData(list);
 //                    }
 //                });
         initData(adapter);
@@ -90,14 +103,14 @@ public class ProductActivity extends AppCompatActivity {
     }
 
     private void initData(ProductAdapter adapter) {
-        List<BaseModel> tasks = new ArrayList<>();
 
-        tasks.add(new CustomModel());
+//        tasks.add(new CustomModel());
         tasks.add(new TaskModel("mainactivity").setTask(new Runnable() {
             @Override
             public void run() {
-                Intent intent = new Intent(ProductActivity.this, MainActivity.class);
-                startActivity(intent);
+//                Intent intent = new Intent(ProductActivity.this, PayWindowActivity.class);
+//                startActivity(intent);
+
             }
         }));
         tasks.add(new TaskModel("job").setTask(new Runnable() {
@@ -224,6 +237,8 @@ public class ProductActivity extends AppCompatActivity {
     }
 
 
+
+
     @Override
     protected void onResume() {
         super.onResume();
@@ -246,6 +261,7 @@ public class ProductActivity extends AppCompatActivity {
 
                 }
             }).create();
+            dialog.setCanceledOnTouchOutside(false);
             dialog.show();
 
 

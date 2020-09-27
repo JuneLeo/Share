@@ -12,8 +12,14 @@
     <style name="SplashTheme" parent="AppTheme">
         <item name="android:background">@drawable/bg_splash</item>
     </style>
+
     <style name="toolbar_blue_theme" parent="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
         <item name="colorControlNormal">#ffffff</item>
         <item name="android:actionBarSize">50dp</item>
+    </style>
+
+    <style name="PayWindowStyle" parent="AppTheme">
+        <!--<item name="android:windowIsFloating">true</item>-->
+        <!--<item name="android:windowCloseOnTouchOutside">false</item>-->
     </style>
 </resources>

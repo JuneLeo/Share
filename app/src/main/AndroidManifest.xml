@@ -159,6 +159,8 @@
         <service android:name=".tile.BackgroundService"
             android:process=":service"/>
         <activity android:name=".ChatActivity"/>
+        <activity android:name=".PayWindowActivity"
+            android:theme="@style/PayWindowStyle"/>
     </application>
 
 </manifest>

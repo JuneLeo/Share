@@ -1,1 +1,5 @@
 include ':app', ':poseidon', ':transform'
+
+
+include ':LuaView'
+project(':LuaView').projectDir = new File('LuaViewSDK/Android/LuaViewSDK')
